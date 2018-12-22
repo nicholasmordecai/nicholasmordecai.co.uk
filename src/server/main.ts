@@ -77,13 +77,13 @@ export default class Main {
         // set the port to listen on
         Main._app.set('port', 4200);
 
-        // start the actual application
-        Main._app.listen(Main._app.get('port'), () => {
-            console.log('Express Started, listening on port 4200');
-        });
+        // // start the actual application
+        // Main._app.listen(Main._app.get('port'), () => {
+        //     console.log('Express Started, listening on port 4200');
+        // });
 
-        Main._app.listen(443, () => {
-            console.log('HTTPS Server running on port 443');
+        Main._app.listen(4200, () => {
+            console.log('HTTPS Server running on port 4200');
         });
     }
 }
