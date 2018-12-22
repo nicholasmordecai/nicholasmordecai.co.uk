@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as express from 'express';
 import * as hbs from 'express-hbs';
 import * as http from 'http';
+import * as https from 'https';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
@@ -23,6 +24,16 @@ export default class Main {
     private _http: http.Server;
 
     constructor() {
+        const privateKey = fs.readFileSync(process.env.PRIVATEKEY, 'utf8');
+        const certificate = fs.readFileSync(process.env.CERT, 'utf8');
+        const ca = fs.readFileSync(process.env.CA, 'utf8');
+
+        const credentials = {
+            key: privateKey,
+            cert: certificate,
+            ca: ca
+        };
+
         // create new instance of express
         Main._app = express();
 
@@ -69,6 +80,10 @@ export default class Main {
         // start the actual application
         Main._app.listen(Main._app.get('port'), () => {
             console.log('Express Started, listening on port 4200');
+        });
+
+        Main._app.listen(443, () => {
+            console.log('HTTPS Server running on port 443');
         });
     }
 }
