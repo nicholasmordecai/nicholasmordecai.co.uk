@@ -1,13 +1,12 @@
 import * as fs from 'fs';
 import * as express from 'express';
 import * as hbs from 'express-hbs';
-import * as http from 'http';
-import * as https from 'https';
-import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
+import * as http from 'http';
+import * as https from 'https';
 
 import MainRouter from './routes/router';
 import APIRouter from './api/api';
@@ -21,7 +20,6 @@ export default class Main {
     public static _app: express.Express;
     private _router: express.Router;
     private _hbs;
-    private _http: http.Server;
 
     constructor() {
         const privateKey = fs.readFileSync(process.env.PRIVATEKEY, 'utf8');
@@ -57,7 +55,7 @@ export default class Main {
             extname: '.hbs'
         }));
 
-        if(process.env.NODE_ENV === 'production') {
+        if (process.env.NODE_ENV === 'production') {
             Main._app.enable('view cache');
         }
 
@@ -82,9 +80,14 @@ export default class Main {
         //     console.log('Express Started, listening on port 4200');
         // });
 
-        Main._app.listen(4200, () => {
-            console.log('HTTPS Server running on port 4200');
-        });
+        var httpServer = http.createServer(Main._app);
+        var httpsServer = https.createServer(credentials, Main._app);
+
+        if (process.env.NODE_ENV === 'production') {
+            httpsServer.listen(process.env.PORT);
+        } else {
+            httpServer.listen(4200);
+        }
     }
 }
 
