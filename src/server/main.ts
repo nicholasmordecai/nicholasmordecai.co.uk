@@ -1,3 +1,5 @@
+require('dotenv').config({ debug: true });
+
 import * as fs from 'fs';
 import * as express from 'express';
 import * as hbs from 'express-hbs';
@@ -22,16 +24,6 @@ export default class Main {
     private _hbs;
 
     constructor() {
-        const privateKey = fs.readFileSync(process.env.PRIVATEKEY, 'utf8');
-        const certificate = fs.readFileSync(process.env.CERT, 'utf8');
-        const ca = fs.readFileSync(process.env.CA, 'utf8');
-
-        const credentials = {
-            key: privateKey,
-            cert: certificate,
-            ca: ca
-        };
-
         // create new instance of express
         Main._app = express();
 
@@ -72,21 +64,27 @@ export default class Main {
         Main._app.use(Error404);
         Main._app.use(ErrorCSRF.handleError(Main._app));
 
-        // set the port to listen on
-        Main._app.set('port', 4200);
-
-        // // start the actual application
-        // Main._app.listen(Main._app.get('port'), () => {
-        //     console.log('Express Started, listening on port 4200');
-        // });
-
-        var httpServer = http.createServer(Main._app);
-        var httpsServer = https.createServer(credentials, Main._app);
-
         if (process.env.NODE_ENV === 'production') {
+            console.log('in production')
+            const privateKey = fs.readFileSync(process.env.PRIVATEKEY, 'utf8');
+            const certificate = fs.readFileSync(process.env.CERT, 'utf8');
+            const ca = fs.readFileSync(process.env.CA, 'utf8');
+
+            const credentials = {
+                key: privateKey,
+                cert: certificate,
+                ca: ca
+            };
+
+            var httpsServer = https.createServer(credentials, Main._app);
+
             httpsServer.listen(process.env.PORT);
+            console.log('running httpson port:', process.env.PORT);
         } else {
-            httpServer.listen(4200);
+            var httpServer = http.createServer(Main._app);
+
+            httpServer.listen(process.env.PORT);
+            console.log('--- DEV MODE --- running http on port:', process.env.PORT);
         }
     }
 }

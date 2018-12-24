@@ -99,9 +99,5 @@ export default () => {
         });
     });
 
-    router.get(process.env.SSLURL, (req, res, next) => {
-        res.status(200).send(process.env.SSLDATA);
-    });
-
     return router;
 }
