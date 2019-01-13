@@ -17,7 +17,6 @@ export default class Technologies {
 
             //apis
             { title: 'Twilio', filters: 'apis', href: '/', imgSmall: '/img/tech/twilio.png' },
-            { title: 'SendInBlue', filters: 'apis', href: '/', imgSmall: '/img/tech/sendinblue.png' },
             { title: 'Gmail', filters: 'apis', href: '/', imgSmall: '/img/tech/gmail.png' },
             { title: 'Slack', filters: 'apis', href: '/', imgSmall: '/img/tech/slack.png' },
             { title: 'Whatsapp', filters: 'apis', href: '/', imgSmall: '/img/tech/whatsapp.png' },
@@ -56,9 +55,7 @@ export default class Technologies {
             { title: 'OAuth2', filters: 'server-side', href: '/', imgSmall: '/img/tech/oauth.jpg' },
             { title: 'JSON Web Tokens', filters: 'server-side', href: '/', imgSmall: '/img/tech/jwt.png' },
             { title: 'Gulp', filters: 'server-side', href: '/', imgSmall: '/img/tech/gulp.png' },
-            { title: 'Webpack', filters: 'server-side', href: '/', imgSmall: '/img/tech/webpack.png' },
-            //{ title: '', filters: 'server-side', href: '/', imgSmall: '/img/tech/' },
-            
+            { title: 'Webpack', filters: 'server-side', href: '/', imgSmall: '/img/tech/webpack.png' }
         ]);
     }
 }
@@ -70,3 +67,20 @@ function shuffle(a) {
     }
     return a;
 }
+
+/**
+ * sendinblue
+ * mailgun
+ * Google Analytics
+ * Google Console
+ * Git Lab
+ * AM Charts
+ * Bash
+ * PM2
+ * Forever.js
+ * TypeScript
+ * HTML5
+ * CSS3
+ * SASS
+ * 
+ */

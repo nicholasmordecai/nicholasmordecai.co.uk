@@ -31,7 +31,7 @@
 
               <ul class="nav navbar-nav local-scroll text-center">
 
-                <li {{#if home}}class="active" {{/if}}>
+                <li {{#if home}} class="active" {{/if}}>
                   <a href="/">Home</a>
                 </li>
                 <li class="dropdown {{#if about}}active {{/if}}">
@@ -44,9 +44,6 @@
                       <a href="/about/programming">Programming</a>
                     </li>
                     <li>
-                      <a href="/about/music">Music</a>
-                    </li>
-                    <li>
                       <a href="/about/photography">Photography</a>
                     </li>
                     <li>
@@ -54,13 +51,16 @@
                     </li>
                   </ul>
                 </li>
-                <li {{#if portfolio}}class="active" {{/if}}>
+                <li {{#if portfolio}} class="active" {{/if}}>
                   <a href="/portfolio">Portfolio</a>
                 </li>
-                <li {{#if technologies}}class="active" {{/if}}>
+                <li {{#if resume}} class="active" {{/if}}>
+                  <a href="/resume">Resume</a>
+                </li>
+                <li {{#if technologies}} class="active" {{/if}}>
                   <a href="/technologies">Technologies</a>
                 </li>
-                <li {{#if contact}}class="active" {{/if}}>
+                <li {{#if contact}} class="active" {{/if}}>
                   <a href="/contact">Contact</a>
                 </li>
               </ul>

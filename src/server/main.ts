@@ -9,6 +9,8 @@ import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
+import * as favicon from 'serve-favicon';
+import * as path from 'path';
 
 import MainRouter from './routes/router';
 import APIRouter from './api/api';
@@ -38,6 +40,7 @@ export default class Main {
 
         Main._app.set('view engine', 'hbs');
         Main._app.set('views', __dirname + '/../views/');
+        Main._app.use(favicon(path.join(__dirname,'../','website', 'public', 'img', 'favicon.ico')));
 
         // configure views path
         Main._app.engine('hbs', hbs.express4({
@@ -79,7 +82,7 @@ export default class Main {
             var httpsServer = https.createServer(credentials, Main._app);
 
             httpsServer.listen(process.env.PORT);
-            console.log('running httpson port:', process.env.PORT);
+            // console.log('running httpson port:', process.env.PORT);
         } else {
             var httpServer = http.createServer(Main._app);
 
@@ -88,6 +91,8 @@ export default class Main {
         }
     }
 }
+
+
 
 var server = new Main();
 

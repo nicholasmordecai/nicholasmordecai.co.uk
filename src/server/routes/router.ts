@@ -13,7 +13,7 @@ export default () => {
     router.use('/', Breadcrumb);
 
     router.get('/', (req, res, next) => {
-        res.render('pages/index', { home: true });
+        res.render('pages/index', { home: true, title: 'Home'});
     });
 
     router.get('/test', (req, res, next) => {
@@ -67,13 +67,13 @@ export default () => {
         });
     });
 
-    router.get('/about/music', (req, res, next) => {
-        res.render('pages/music', {
-            music: true,
-            title: 'My Music',
-            path: req.breadcrumbs
-        });
-    });
+    // router.get('/about/music', (req, res, next) => {
+    //     res.render('pages/music', {
+    //         music: true,
+    //         title: 'My Music',
+    //         path: req.breadcrumbs
+    //     });
+    // });
 
     router.get('/about/photography', (req, res, next) => {
         res.render('pages/photography', {
@@ -92,9 +92,17 @@ export default () => {
     });
 
     router.get('/about/programming', (req, res, next) => {
-        res.render('pages/travels', {
+        res.render('pages/programming', {
             travels: true,
             title: 'My Travels',
+            path: req.breadcrumbs
+        });
+    });
+
+    router.get('/resume', (req, res, next) => {
+        res.render('pages/resume', {
+            resume: true,
+            title: 'Resume',
             path: req.breadcrumbs
         });
     });

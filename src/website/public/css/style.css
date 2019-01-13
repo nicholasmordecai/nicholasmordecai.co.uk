@@ -4137,3 +4137,9 @@ p.footer-address {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.post-thumb {
+  object-fit: cover;
+  width: 555px;
+  height: 390px;
+}
