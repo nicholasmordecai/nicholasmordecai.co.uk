@@ -89,10 +89,12 @@ export default () => {
 
     router.get('/callback' , (req, res, next) => {
         console.log(req.params, req.body);
+        res.status(200).end();
     });
 
     router.post('/callback' , (req, res, next) => {
         console.log(req.params, req.body);
+        res.status(200).end();
     });
 
     router.get('/', (req, res, next) => {
