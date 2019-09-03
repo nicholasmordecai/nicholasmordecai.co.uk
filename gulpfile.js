@@ -151,9 +151,14 @@ gulp.task('copyImages', function () {
         .pipe(gulp.dest('build/website/public/img'));
 });
 
+gulp.task('copyWellKnown', function () {
+    return gulp.src(['src/website/public/.well-known/**/*'])
+        .pipe(gulp.dest('build/website/public/.well-known'));
+});
+
 gulp.task('copyRev', function () {
     return gulp.src(['src/website/public/revolution/**/*'])
         .pipe(gulp.dest('build/website/public/revolution'));
 });
 
-gulp.task('fullBuild', ['copyDataFiles', 'compileSASS', 'bundleBrowserify', 'copyCSS', 'copyFonts', 'copyJS', 'copyViews', 'copyImages', 'copyRev']);
+gulp.task('fullBuild', ['copyDataFiles', 'compileSASS', 'bundleBrowserify', 'copyCSS', 'copyFonts', 'copyJS', 'copyViews', 'copyImages', 'copyWellKnown', 'copyRev']);
