@@ -87,6 +87,14 @@ export default () => {
         nepL3fdNDNCQxMBwzPIg0vus`);
     });
 
+    router.get('/callback' , (req, res, next) => {
+        console.log(req.params, req.body);
+    });
+
+    router.post('/callback' , (req, res, next) => {
+        console.log(req.params, req.body);
+    });
+
     router.get('/', (req, res, next) => {
         res.render('pages/index', { home: true, title: 'Home'});
     });
