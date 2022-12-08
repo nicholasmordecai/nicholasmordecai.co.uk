@@ -23,7 +23,7 @@
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "dotenv": "^6.0.0",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-hbs": "^1.0.4",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
